@@ -226,8 +226,6 @@ require('../lib/configuration')(sails).load(function (err) {
 		}
 	}
 
-
-
 	// Create a new app
 	// second argument == app name
 	else if (argv._[0].match(/^new$/)) {
@@ -239,24 +237,22 @@ require('../lib/configuration')(sails).load(function (err) {
 		if (argv.template) {
 			template = argv.template;
 		}
-	}
 
-	// Default to not using the script linker functionality, but allow an override
-	// with --linker option
+		// Default to not using the script linker functionality, but allow an override
+		// with --linker option
 		var useLinker = false
 		if (argv.linker) {
 			useLinker = true;
 		}
 		
 		// TODO: change to single options object we pass in.
-	newSailsApp(argv._[1], template, useLinker);
-
+		newSailsApp(argv._[1], template, useLinker);
+	}
 
 	// Build a www directory of everyting from /.tmp/public (aka /assets)
 	else if (argv._[0].match(/^build$/)) {
 		return sails.build();
 	}
-
 
 	// Unknown command, print out usage
 	else {
@@ -264,9 +260,6 @@ require('../lib/configuration')(sails).load(function (err) {
 		sailsUsage();
 		sails.log.error (argv._[0] + ' is not a valid action.');
 	}
-
-
-
 
 	// Display usage
 	function sailsUsage() {
@@ -289,7 +282,6 @@ require('../lib/configuration')(sails).load(function (err) {
 		sails.log.info(usage);
 	}
 
-
 	// Verify that an argument exists
 	function verifyArg(argNo, msg) {
 		if (!argv._[argNo]) {
@@ -297,8 +289,6 @@ require('../lib/configuration')(sails).load(function (err) {
 			process.exit(1);
 		}
 	}
-
-
 });
 
 
