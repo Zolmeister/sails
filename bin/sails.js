@@ -7,6 +7,8 @@ var sails = require('../lib');
 sails.config = {
 	appPath: process.cwd(),
   prod: argv.prod
+	// Indicate that this is a mock config
+	mock: true
 };
 require('../lib/configuration')(sails).load(function (err) {
 	if (err) throw new Error(err);
@@ -273,7 +275,8 @@ require('../lib/configuration')(sails).load(function (err) {
 		usage += leftColumn('  [--dev]') + 'with development environment specified \n';
 		usage += leftColumn('  [--prod]') + 'with production environment specified \n';
 		usage += leftColumn('sails console') + 'Run this Sails app (in the current dir & in interactive mode.)\n';
-		usage += leftColumn('sails new <appName>') + 'Create a new Sails project in the current dir\n';
+		usage += leftColumn('sails new <appName>') + 'Create a new Sails project in a folder called <appName>\n';
+		usage += leftColumn('sails new <appName> --linker') + 'Create a new Sails project in a folder called <appName>, using automatic asset linking\n';
 		usage += leftColumn('sails generate <foo>') + 'Generate api/models/Foo.js and api/controllers/FooController.js\n';
 		usage += leftColumn('sails generate model <foo>') + 'Generate api/models/Foo.js\n';
 		usage += leftColumn('sails generate controller <foo>') + 'Generate api/controllers/FooController.js\n';
